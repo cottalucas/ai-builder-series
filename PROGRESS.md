@@ -1,75 +1,88 @@
 # PROGRESS.md
-
-Track where you are across the three chapters. Update this as you move through the framework.
-
-> Notion reference: [AI Builder Series Home](https://www.notion.so/31d26a42061181d7a341f5f25c0ff028)
-
----
-
-## Current phase
-
-<!-- What are you doing right now? One sentence. -->
-> e.g. "Validating prototype with first 5 users"
+# The agent writes here after every completed task.
+# This is the memory between sessions — without it, every session starts from zero.
+#
+# RULE FOR AGENT: After every completed task, add a line here before moving to the next.
+# FORMAT: [date] · [task] · [status] · [what was built] · [next]
 
 ---
 
-## Chapter 1 — The Prototype Brief
+## Current state
 
-> Notion: [Chapter 1](https://www.notion.so/31d26a42061181d892f1ee9e70d57504)
-
-| File | Status | Notes |
-|---|---|---|
-| `the-brief.md` | [ ] Not started / [ ] In progress / [ ] Done | |
-| `SPEC.md` | [ ] Not started / [ ] In progress / [ ] Done | |
-| `agent-instructions.md` | [ ] Not started / [ ] In progress / [ ] Done | |
-
-**Prototype status:**
-<!-- What exists right now? What's working? What's broken? -->
-
-**Exit criteria met?**
-<!-- Chapter 1 is done when: you have a working prototype, real users have touched it, and you know what to build next. -->
+Phase: *Prototype / Product / Growth*
+Last updated: *YYYY-MM-DD*
+Working: *e.g. Auth + upload + review display end-to-end*
+Blocked: *e.g. PDF export — waiting on library decision*
+Next session: *e.g. T004 PDF export, then T005 retry flow*
 
 ---
 
-## Chapter 2 — The Product Brief
+## Chapter 1
 
-> Notion: [Chapter 2](https://www.notion.so/31d26a420611813499bfe07c988c97ac)
+| File | Status |
+|---|---|
+| .cursor/rules/project.md | [ ] / [~] / [x] |
+| .cursor/rules/stack.md | [ ] / [~] / [x] |
+| chapter-1/the-brief.md | [ ] / [~] / [x] |
+| chapter-1/SPEC.md | [ ] / [~] / [x] |
+| chapter-1/VALIDATION.md | [ ] / [~] / [x] |
+| ENV.md | [ ] / [~] / [x] |
 
-| File | Status | Notes |
-|---|---|---|
-| `PRD.md` | [ ] Not started / [ ] In progress / [ ] Done | |
-| `ARCHITECTURE.md` | [ ] Not started / [ ] In progress / [ ] Done | |
-| `SCENARIOS.md` | [ ] Not started / [ ] In progress / [ ] Done | |
-| `user-journeys.md` | [ ] Not started / [ ] In progress / [ ] Done | |
-| `design-brief.md` | [ ] Not started / [ ] In progress / [ ] Done | |
-
-**Product status:**
-<!-- What's shipped? What's in progress? What's on hold? -->
-
-**Exit criteria met?**
-<!-- Chapter 2 is done when: you have a defined product, a technical architecture, and a prioritised roadmap. -->
+Exit: *5+ real users completed the core flow without help. Genuine value observed.*
 
 ---
 
-## Chapter 3 — The Growth Brief
+## Chapter 2
 
-> Notion: [Chapter 3](https://www.notion.so/31d26a42061181eba81fd97093010d90)
+| File | Status |
+|---|---|
+| chapter-2/PRD.md | [ ] / [~] / [x] |
+| chapter-2/GO-LIVE.md | [ ] / [~] / [x] |
+| chapter-2/ARCHITECTURE.md | [ ] / [~] / [x] |
+| chapter-2/SCENARIOS.md | [ ] / [~] / [x] |
+| chapter-2/user-journeys.md | [ ] / [~] / [x] |
+| chapter-2/design-brief.md | [ ] / [~] / [x] |
 
-| File | Status | Notes |
-|---|---|---|
-| `LAUNCH.md` | [ ] Not started / [ ] In progress / [ ] Done | |
-| `task-list.md` | [ ] Not started / [ ] In progress / [ ] Done | |
-| `implementation-plan.md` | [ ] Not started / [ ] In progress / [ ] Done | |
+Exit: *Product passes acceptance criteria. Metrics instrumentation live before launch.*
 
-**Growth status:**
-<!-- What channels are active? What's the current acquisition loop? What's retention looking like? -->
+---
+
+## Chapter 3
+
+| File | Status |
+|---|---|
+| chapter-3/LAUNCH.md | [ ] / [~] / [x] |
+| chapter-3/task-list.md | [ ] / [~] / [x] |
+| chapter-3/implementation-plan.md | [ ] / [~] / [x] |
+
+---
+
+## Task log *(agent writes here — newest first)*
+
+```
+[date] · [task ID] · [task name] · complete
+  Built: [1–2 sentences]
+  Tests: [N passed, N failed]
+  Next: [next task]
+```
+
+Example:
+```
+2026-03-17 · T003 · Review display · complete
+  Built: ReviewCard renders deductions from JSON. Status badges working. Form refs in monospace.
+  Tests: 8 passed, 0 failed
+  Next: T004 — PDF export
+
+2026-03-15 · T002 · Upload zone · complete
+  Built: Drag-drop + file picker. Type/size validation client-side. Progress bar. Error states.
+  Tests: 6 passed, 0 failed
+  Next: T003 — Review display
+```
 
 ---
 
 ## Decisions log
 
-<!-- Running log of key decisions made. Date + decision + why. -->
-
-| Date | Decision | Rationale |
+| Date | Decision | Why |
 |---|---|---|
-| YYYY-MM-DD | | |
+| *e.g. 2026-03-14* | *e.g. pdf-parse over OCR* | *e.g. Lower latency, lower cost. Most Swiss digital docs have text layers.* |

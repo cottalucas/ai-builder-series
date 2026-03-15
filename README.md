@@ -1,92 +1,133 @@
 # AI Builder Series — Executable Scaffold
 
-This repo is the executable layer behind the [AI Builder Series](https://www.notion.so/31d26a42061181d7a341f5f25c0ff028) by Lucas Cotta.
+The executable layer behind the [AI Builder Series](https://www.notion.so/31d26a42061181d7a341f5f25c0ff028) by Lucas Cotta.
 
-The series is a three-chapter public framework guiding builders from idea → prototype → product → growth, using AI tools as leverage.
-
-This repo is the thing you clone and fill in. The Notion chapters explain the thinking. These files are where you do the work.
+Clone it. Fill it in. Drop it into Cursor. Build.
 
 ---
 
-## How to use this repo
+## Setup
 
-**Clone it directly into your project root:**
 ```bash
 git clone https://github.com/cottalucas/ai-builder-series.git .
 ```
 
-Or clone it standalone and copy the files into your existing project root.
-
-**Then:**
-1. Open the project in your AI code editor
-2. Fill in `agent-instructions.md` first — it lives at root and your AI builder reads it automatically every session
-3. Fill in `chapter-1/the-brief.md` and `chapter-1/SPEC.md` before writing any code
-4. Start building — your AI builder uses these files as live context
-5. Come back to `chapter-2/` when you have real users and a validated direction
-6. Come back to `chapter-3/` when you're ready to grow
-
-**A complete `chapter-1/` is enough to ship an MVP.** The chapter-2 and chapter-3 files sit quietly in their folders until you need them. No friction, no dependency.
-
-> The `skills/` folder also lives at root. Add skill modules as you identify repeatable tasks your AI builder needs to handle consistently.
-
 ---
 
-## Structure
+## Fill order — do this exactly
 
-```
-your-project/                   # ← clone into here
-│
-├── agent-instructions.md       # AI builder operating manual — ROOT LEVEL, always
-├── PROGRESS.md                 # Where you are across all three chapters
-├── .gitignore                  # Sensible defaults pre-configured
-│
-├── chapter-1/                  # The Prototype Brief — start here
-│   ├── the-brief.md            # Your idea, problem, user, and constraints
-│   └── SPEC.md                 # Technical spec for your prototype
-│
-├── chapter-2/                  # The Product Brief — when prototype is validated
-│   ├── PRD.md                  # Product requirements document
-│   ├── ARCHITECTURE.md         # Technical architecture
-│   ├── SCENARIOS.md            # Edge cases and holdout scenarios
-│   ├── user-journeys.md        # Core user flows
-│   └── design-brief.md        # Visual and UX direction
-│
-├── chapter-3/                  # The Growth Brief — when you're ready to scale
-│   ├── LAUNCH.md               # Launch strategy and GTM plan
-│   ├── task-list.md            # Prioritised execution tasks
-│   └── implementation-plan.md # Phased rollout and milestones
-│
-└── skills/                     # Reusable AI skill modules
-    ├── README.md               # What skills are and how to add them
-    └── example-skill/
-        └── SKILL.md            # A filled-in example to copy from
-```
+This is not optional. The files are designed to be filled in this sequence.
+Skip a step and your AI builder will invent answers you didn't give it.
 
----
+### MVP (Chapter 1 only — enough to ship a prototype)
 
-## Chapter map
+| Step | File | What you're doing | Time |
+|---|---|---|---|
+| 1 | `.cursor/rules/project.md` | Name your project. One sentence on what it does. | 5 min |
+| 2 | `.cursor/rules/stack.md` | Commit to your tech stack. | 10 min |
+| 3 | `chapter-1/the-brief.md` | Define the problem, user, scope, constraints. | 1–2 hrs |
+| 4 | `chapter-1/SPEC.md` | Define the technical contract — data model, flows, phase gates. | 1–2 hrs |
+| 5 | **Build** | First prompt: *"Read SPEC.md and .cursor/rules/. Write your build plan before any code."* | — |
+| 6 | `PROGRESS.md` | Your AI builder updates this after every task. You update the status fields. | Ongoing |
 
-| Chapter | Notion | When to use |
+### Product (Chapter 2 — after prototype is validated)
+
+| Step | File | What you're doing |
 |---|---|---|
-| Chapter 1 — The Prototype Brief | [Open](https://www.notion.so/31d26a42061181d892f1ee9e70d57504) | Day one. Always. |
-| Chapter 2 — The Product Brief | [Open](https://www.notion.so/31d26a420611813499bfe07c988c97ac) | After you have real users and validated direction |
-| Chapter 3 — The Growth Brief | [Open](https://www.notion.so/31d26a42061181eba81fd97093010d90) | When you're ready to scale distribution and retention |
+| 7 | `chapter-2/PRD.md` | Document what prototype taught you. Define the real product. |
+| 8 | `chapter-2/ARCHITECTURE.md` | Full system design — data model, security, testing, what breaks first. |
+| 9 | `chapter-2/user-journeys.md` | Every critical flow with failure states. |
+| 10 | `chapter-2/design-brief.md` | Visual direction — colours, typography, component patterns. |
+| 11 | `chapter-2/SCENARIOS.md` | Edge cases. **Keep this in a separate repo — your AI builder must never see it.** |
+
+### Growth (Chapter 3 — when product is live and metrics are running)
+
+| Step | File | What you're doing |
+|---|---|---|
+| 12 | `chapter-3/LAUNCH.md` | Positioning, channels, launch sequence, rollback criteria. |
+| 13 | `chapter-3/task-list.md` | Live execution tasks with acceptance criteria. |
+| 14 | `chapter-3/implementation-plan.md` | Growth phases, loops, metrics, eval cycle. |
 
 ---
 
-## Philosophy
+## File map
 
-- **Tool-agnostic** — no specific tools are prescribed. The files work with any AI code editor, any stack.
-- **Progressive** — each chapter builds on the last, but each is independently useful.
-- **AI-native** — every file is written to be read by both you and your AI builder as live context.
-- **Specific beats generic** — placeholder guidance is instructional, not decorative.
+```
+your-project/
+│
+├── .cursor/
+│   ├── rules/
+│   │   ├── project.md        ← FILL FIRST. Project name, what it does, phase.
+│   │   ├── stack.md          ← FILL SECOND. Tech stack, commands, conventions.
+│   │   ├── workflow.md       ← Pre-filled. Phase gates, session rules, debug protocol.
+│   │   └── known-issues.md  ← Live bug log. You and AI builder both update this.
+│   ├── commands/
+│   │   ├── plan.md           ← /plan — plan before building any feature
+│   │   ├── ship.md           ← /ship — pre-ship checklist
+│   │   └── debug.md         ← /debug — structured debugging protocol
+│   └── plans/               ← AI builder saves plans here (Shift+Tab in Cursor)
+│
+├── ENV.md                   ← Environment variables map. Fill alongside SPEC.md.
+├── PROGRESS.md              ← AI builder writes here after every task. You own the status fields.
+│
+├── chapter-1/               ← The Prototype Brief. Fill before writing any code.
+│   ├── the-brief.md         ← Problem, user, solution, scope, constraints, success signal.
+│   └── SPEC.md              ← Stack, data model, flows, security, testing, phase gates.
+│
+├── chapter-2/               ← The Product Brief. Fill after prototype is validated by real users.
+│   ├── PRD.md               ← Validated problem, vision, features, metrics.
+│   ├── GO-LIVE.md           ← Pre-production checklist. Run before every prod deploy.
+│   ├── ARCHITECTURE.md      ← Full system design, security, testing, bottlenecks.
+│   ├── SCENARIOS.md         ← Edge cases. Keep in a SEPARATE REPO — AI never sees this.
+│   ├── user-journeys.md     ← Core flows with failure states.
+│   └── design-brief.md     ← Colours, typography, component patterns, layout.
+│
+├── chapter-3/               ← The Growth Brief. Fill when product is live and metrics are running.
+│   ├── LAUNCH.md            ← Positioning, channels, launch sequence, rollback criteria.
+│   ├── task-list.md         ← Live tasks with acceptance criteria. AI builder updates status.
+│   └── implementation-plan.md ← Growth phases, loops, metrics, eval cycle.
+│
+└── skills/                  ← Domain-specific knowledge modules loaded on demand.
+    ├── README.md            ← How to create and use skills.
+    └── example-skill/
+        └── SKILL.md         ← Filled-in example. Copy and adapt.
+```
 
 ---
 
-## Skills
+## How it works in Cursor
 
-The `skills/` folder holds reusable instruction modules your AI builder can reference for specific tasks (generating PDFs, parsing documents, writing emails, etc.). See `skills/README.md` for how to create and use them.
+**`.cursor/rules/`** — Cursor reads all files here automatically at the start of every session. No prompt needed. These replace the single `agent-instructions.md` file — modular, focused, easier to maintain.
+
+**`.cursor/commands/`** — Type `/plan`, `/ship`, or `/debug` in the Cursor agent input to run these workflows. Add your own as you discover repeatable patterns.
+
+**`SPEC.md`** — The contract. Your AI builder builds what this document says. If the code drifts from the spec, the spec wins — update the code, not the spec.
+
+**`PROGRESS.md`** — The session handoff. Your AI builder writes here after every task so the next session knows exactly where to pick up. Without this, every session starts from zero.
+
+**`skills/`** — Domain knowledge loaded on demand. Different from rules — not always-on. Use for things like Swiss tax law, a complex output format, or a specific API integration pattern.
+
+---
+
+## Progressive adoption
+
+Chapter 1 is enough to ship an MVP. Chapters 2 and 3 sit quietly until you need them.
+
+| Chapter | Notion | When |
+|---|---|---|
+| 1 — The Prototype Brief | [Open →](https://www.notion.so/31d26a42061181d892f1ee9e70d57504) | Day one |
+| 2 — The Product Brief | [Open →](https://www.notion.so/31d26a420611813499bfe07c988c97ac) | After 5+ real users validate the prototype |
+| 3 — The Growth Brief | [Open →](https://www.notion.so/31d26a42061181eba81fd97093010d90) | After product is live and metrics are instrumented |
+
+---
+
+## Tool note
+
+This repo is built for Cursor. The `.cursor/` folder uses Cursor's native rules, commands, and plans system.
+
+If you use a different AI code editor, the concepts are the same — adapt the `.cursor/` folder to your tool's equivalent (e.g. `.github/copilot-instructions.md` for Copilot, `CLAUDE.md` for Claude Code). The chapter files work with any tool.
 
 ---
 
 *Part of the [AI Builder Series](https://www.notion.so/31d26a42061181d7a341f5f25c0ff028) by Lucas Cotta*
+*[github.com/cottalucas/ai-builder-series](https://github.com/cottalucas/ai-builder-series)*
